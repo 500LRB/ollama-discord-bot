@@ -1,5 +1,5 @@
 # ollama-discord-bot
-silly ai bot that uses ollama and discord.py to talk when you ping it (also skepper is wrong this isnt a fork)
+silly ai bot that uses ollama and discord.py to talk when you ping it 
 
 # dependencies
 1. llama3.2 (from ollama)
