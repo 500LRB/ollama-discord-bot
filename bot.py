@@ -15,7 +15,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if client.user.mentioned_in(message) and not message.author.bot:
+    if client.user.mentioned_in(message):
         msg = message.content.replace(f"<@{client.user.id}>", "").strip()
         if message.channel.id not in pinged_messages:
             pinged_messages[message.channel.id] = []
