@@ -21,7 +21,7 @@ async def on_message(message):
         pinged_messages[message.channel.id] = []
         message.send(f"message history cleared for channel id {message.channel.id}")
 
-    elif client.user.mentioned_in(message) and not message.author.bot:
+    elif client.user.mentioned_in(message):
 
         if message.attachments:
             image = []
