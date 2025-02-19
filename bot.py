@@ -18,8 +18,10 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if message.content == "!clear":
-        pinged_messages[message.channel.id] = []
-        message.send(f"message history cleared for channel id {message.channel.id}")
+        async with message.channel.typing():
+            if message.channel.id in pinged_messages:
+                pinged_messages[message.channel.id].clear()
+            await message.reply(f"message history cleared for channel id {message.channel.id}")
 
     elif client.user.mentioned_in(message):
 
@@ -39,6 +41,7 @@ async def on_message(message):
             image = []
 
         msg = message.content.replace(f"<@{client.user.id}>", "").strip()
+
         if message.channel.id not in pinged_messages:
             pinged_messages[message.channel.id] = []
 
