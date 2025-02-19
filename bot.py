@@ -7,7 +7,7 @@ import base64
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 model = 'llama3.2-vision' # the model you'd like to use for ollama
-new_message_delay = 0.05 # in discord, if a message is over 4000 characters, this is for the delay of sending the split up text
+new_message_delay = 0.05 # in discord, if a message is over 2000 characters, this is for the delay of sending the split up text
 enable_vision = True
 
 pinged_messages = {}
@@ -66,8 +66,8 @@ async def on_message(message):
                         "content": response.message.content
                     })
                 print(f"message: {msg} sent by {message.author}\n AI response: {response.message.content}")
-                if len(response.message.content) > 4000:
-                    chunks = [response.message.content[i:i+4000 ] for i in range(0, len(response.message.content), 4000 )]
+                if len(response.message.content) > 2000:
+                    chunks = [response.message.content[i:i+2000 ] for i in range(0, len(response.message.content), 2000 )]
                     print(f"chunks made for this message is {len(chunks)}")
                     for chunk in chunks: 
                         await message.reply(chunk)
