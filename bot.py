@@ -30,7 +30,7 @@ async def on_message(message):
         if message.attachments and enable_vision: #stuff used for the images
             image = []
             for attachment in message.attachments: #some weird implementation i had to do to get discord.py to read multiple attachments
-                attachment_content = await attachment.read
+                attachment_content = await attachment.read()
                 print(f"message has {len(message.attachments)} amount of attachments")
                 
                 if attachment.content_type.startswith("image/"):
